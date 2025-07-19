@@ -1,0 +1,12 @@
+{
+    "name": "tu-nombre/tech-store",
+    "description": "Tienda de productos tecnológicos",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
