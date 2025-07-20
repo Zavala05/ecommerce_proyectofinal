@@ -23,12 +23,29 @@ class ProductController extends Controller
         $this->view('products/index', $data);
     }
 
-    public function show($id)
-    {
-        $product = $this->productModel->getProductById($id);
-        $data = [
-            'product' => $product
-        ];
-        $this->view('products/show', $data);
+    public function show($id = null)
+{
+    // Depuración en logs
+    error_log("ID recibido en show(): ".print_r($id, true));
+    
+    if (!is_numeric($id)) {
+        error_log("Error: ID no numérico recibido - ".$id);
+        header('HTTP/1.1 400 Bad Request');
+        die("ID de producto debe ser numérico");
     }
+
+    $product = $this->productModel->getProductById($id);
+    
+    if (!$product) {
+        header('Location: '.URL_ROOT.'/products');
+        exit();
+    }
+    
+    $data = [
+        'title' => $product->name,
+        'product' => $product
+    ];
+    
+    $this->view('products/show', $data);
+}
 }

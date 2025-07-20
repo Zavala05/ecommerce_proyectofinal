@@ -17,9 +17,9 @@ class ProductModel
     }
 
     public function getProductById($id)
-    {
-        $this->db->query('SELECT * FROM products WHERE id = :id');
-        $this->db->bind(':id', $id);
-        return $this->db->single();
-    }
+{
+    $this->db->query('SELECT * FROM products WHERE id = :id');
+    $this->db->bind(':id', $id);
+    return $this->db->single();
+}
 }

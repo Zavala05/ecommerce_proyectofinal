@@ -1,8 +1,17 @@
 <?php
+// Debug inicial
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 require_once dirname(__DIR__) . '/config/config.php';
 
-use App\Core\App;
+// Manejo especial para cuando no llega la URL
+if (!isset($_GET['url']) && isset($_SERVER['REQUEST_URI'])) {
+    $base = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+    $request = str_replace($base, '', $_SERVER['REQUEST_URI']);
+    $_GET['url'] = ltrim(strtok($request, '?'), '/');
+}
 
+use App\Core\App;
 $app = new App();
-?>
