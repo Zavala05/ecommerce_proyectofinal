@@ -20,10 +20,20 @@
                         <a class="nav-link" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/product">Productos</a>
+                        <a class="nav-link" href="<?= URL_ROOT ?>/products">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Carrito</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container mt-4">
+
+
+    <style>
+        .container{
+            gap: 20px;
+        }
+    </style>
